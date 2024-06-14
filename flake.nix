@@ -22,7 +22,9 @@
           name = "nvim-johan";
           runtimeInputs = dependencies;
           text = ''
-            nvim -u ${nvim-config}/init.lua
+            export XDG_CONFIG_HOME=${nvim-config}
+            export NVIM_APPNAME='./'
+            nvim
           '';
         };
         devShells.default = pkgs.mkShell {
