@@ -10,17 +10,16 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        nvim-config = pkgs.fetchFromGitHub {
-          owner = "realbogart";
-          repo = "nvim";
-          rev = "ab901da67e6759b5748e6cc7e4a8ea2993143a73";
-          hash = "sha256-fOESLAdK8I3CZvEABLQo3xwpV7ekMp0kbIvW8Wzeu6k=";
+        nvim-config = builtins.fetchGit {
+          url = "git@github.com:realbogart/nvim.git";
+          rev = "effcaeba03f61d3b567995b680a606f55e0db4fe";
+          submodules = true;
         };
-        dependencies = with pkgs; [ neovim ] ++ [ nvim-config ];
+        dependencies = with pkgs; [ neovim ];
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "nvim-johan";
-          runtimeInputs = dependencies;
+          runtimeInputs = dependencies ++ [ nvim-config ];
           text = ''
             export XDG_CONFIG_HOME=${nvim-config}
             export NVIM_APPNAME='./'
