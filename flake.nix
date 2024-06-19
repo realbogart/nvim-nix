@@ -11,11 +11,11 @@
       let
         pkgs = import nixpkgs { inherit system; };
         nvim-config = builtins.fetchGit {
-          url = "git@github.com:realbogart/nvim.git";
+          url = "https://github.com:realbogart/nvim.git";
           rev = "af8f84762a4ce3d4339fd3b7c59f977a65da0152";
           submodules = true;
         };
-        dependencies = with pkgs; [ neovim ];
+        dependencies = with pkgs; [ neovim ripgrep ];
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "nvim-johan";
