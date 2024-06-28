@@ -11,11 +11,11 @@
       let
         pkgs = import nixpkgs { inherit system; };
         nvim-config = builtins.fetchGit {
-          url = "https://github.com:realbogart/nvim.git";
-          rev = "af8f84762a4ce3d4339fd3b7c59f977a65da0152";
+          url = "https://github.com/realbogart/nvim.git";
+          rev = "fc797f1bd8164ba01048d3be32849ef9c10b2042";
           submodules = true;
         };
-        dependencies = with pkgs; [ neovim ripgrep ];
+        dependencies = with pkgs; [ neovim ripgrep git nil nixfmt ];
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "nvim-johan";
@@ -23,9 +23,12 @@
           text = ''
             export XDG_CONFIG_HOME=${nvim-config}
             export NVIM_APPNAME='./'
+            export TERM=tmux-256color
+            export LANG=en_US.UTF-8
             nvim
           '';
         };
+
         devShells.default = pkgs.mkShell {
           packages = dependencies ++ [ packages.default ];
           shellHook = "";
