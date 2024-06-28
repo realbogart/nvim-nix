@@ -15,7 +15,17 @@
           rev = "fc797f1bd8164ba01048d3be32849ef9c10b2042";
           submodules = true;
         };
-        dependencies = with pkgs; [ neovim ripgrep git nil nixfmt ];
+        dependencies = with pkgs; [
+          neovim
+          ripgrep
+          git
+          nil
+          nixfmt
+          stylua
+          fzf
+          prettierd
+          jq
+        ];
       in rec {
         packages.default = pkgs.writeShellApplication {
           name = "nvim-johan";
