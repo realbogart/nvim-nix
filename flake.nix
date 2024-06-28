@@ -12,7 +12,7 @@
         pkgs = import nixpkgs { inherit system; };
         nvim-config = builtins.fetchGit {
           url = "https://github.com/realbogart/nvim.git";
-          rev = "fc797f1bd8164ba01048d3be32849ef9c10b2042";
+          rev = "b1700b42db98778528551bfea1272f4252efd17e";
           submodules = true;
         };
         dependencies = with pkgs; [
@@ -20,7 +20,7 @@
           ripgrep
           git
           nil
-          nixfmt
+          nixfmt-classic
           stylua
           fzf
           prettierd
