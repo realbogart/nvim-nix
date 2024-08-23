@@ -12,7 +12,7 @@
         pkgs = import nixpkgs { inherit system; };
         nvim-config = builtins.fetchGit {
           url = "https://github.com/realbogart/nvim.git";
-          rev = "b1700b42db98778528551bfea1272f4252efd17e";
+          rev = "577cc9b35f2aa1ae0775b251452d2ec2904c0977";
           submodules = true;
         };
         dependencies = with pkgs; [
